@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ../Techdome-frontend
+    ports:
+      - '3000:3000'
+    depends_on: 
+      - backend
+    networks:
+      - mern-network
+  backend:
+    build:
+      context: ../Techdome-backend
+    ports:
+      - '3080:3080'
+    depends_on: 
+      - mongodb-container
+    networks:
+      - mern-network
+  mongodb-container:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    networks:
+      - mern-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: mern_app
+networks:
+  mern-network:
+    driver: bridge
