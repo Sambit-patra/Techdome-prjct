@@ -17,6 +17,7 @@ Using Docker hub documention or mongo db
 Set variables fo the DB for username, password and the database name
 
 Deploying Backend
+
 Checked and found in the server.js file, that there are process env variables that need to be passed in order to deploy the backend
 
 Created a .env file
